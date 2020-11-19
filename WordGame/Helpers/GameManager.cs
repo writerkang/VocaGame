@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Text;
 using WordGame.Models;
 
@@ -10,19 +12,38 @@ namespace WordGame.Helpers
         public List<Word> MakeAllWordList()
         {
             var result = new List<Word>();
+            List<string> list = File.ReadLines(@"..\\..\\..\\Toeic.txt")
+                .Where(x => x.Length >= 3 && x.Length <= 10)
+                .ToList();
 
-            result.Add(new Word {Name = "compute"});
-            result.Add(new Word {Name = "bake"});
-            result.Add(new Word {Name = "employee"});
-            result.Add(new Word {Name = "store"});
-            result.Add(new Word {Name = "copy"});
-            result.Add(new Word {Name = "occupy"});
-            result.Add(new Word {Name = "adjust"});
-            result.Add(new Word {Name = "estimate"});
-            result.Add(new Word {Name = "illustrate"});
-            result.Add(new Word {Name = "generate"});
+            list.ForEach(x => result.Add(new Word { Name = x}));
+
+            Console.WriteLine("총 개수 " + result.Count);
 
             return result;
+        }
+
+        public List<Position> NewMakeRandomWordBoard()
+        {
+            Console.WriteLine("중간!");
+            var list = new List<Position>();
+
+            int boardSize = 3;
+
+            for (int i = 0; i < boardSize; i++)
+            {
+                for (int j = 0; j < boardSize; i++)
+                {
+                    var item = new Position
+                    {
+                        Row = i,
+                        Columnn = j
+                    };
+                    list.Add(item);                       
+                }
+            }
+            Console.WriteLine(list.Count);
+            return list;            
         }
 
         public List<Word> MakeRandomWordList(int size)
@@ -45,6 +66,10 @@ namespace WordGame.Helpers
         public char[,] MakeRandomWordBoard(int boardSize, int wordsCount)
         {
             var wordList = MakeRandomWordList(wordsCount);
+            Console.Write("정답: ");
+            wordList.ForEach(x => Console.Write($"{x.Name} "));
+            Console.WriteLine();
+
             var board = new char[boardSize, boardSize];
             var random = new Random();
 
@@ -177,6 +202,18 @@ namespace WordGame.Helpers
                             }
                             success = true;
                         }
+                    }
+                }
+            }
+            
+            // 남은 공란 랜덤 초기화
+            for (int i = 0; i < boardSize; i++)
+            {
+                for (int j = 0; j < boardSize; j++)
+                {
+                    if(board[i,j] == 'X')
+                    {
+                        //board[i, j] = (char)random.Next(97, 123);
                     }
                 }
             }
