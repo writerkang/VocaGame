@@ -11,7 +11,8 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            StartGame();
+            NewStartGame();
+            //StartGame();
         }
 
         public static void NewStartGame()
@@ -21,7 +22,7 @@ namespace ConsoleApp1
             var randomList = manager.MakeRandomWordList(7);
 
             var list = new List<Position>();
-            int boardSize = 30;
+            int boardSize = 10;
 
             // 좌표 초기화
             for (int i = 0; i < boardSize; i++)
@@ -133,8 +134,9 @@ namespace ConsoleApp1
                         {
                             for (int i = startY; i <= endY; i++)
                             {
-                                board[startX, i] = (char)32;
+                                board[startX, i] = (char)32;                                
                             }
+                            wordCount--;
                         }
                         break;
 
@@ -148,8 +150,9 @@ namespace ConsoleApp1
                         {
                             for (int i = startX; i <= endX; i++)
                             {
-                                board[i, startY] = (char)32;
+                                board[i, startY] = (char)32;                                
                             }
+                            wordCount--;
                         }
                         break;
 
@@ -163,8 +166,9 @@ namespace ConsoleApp1
                         {
                             for (int i = 0; i <= endX - startX; i++)
                             {
-                                board[startX + i, startY + i] = (char)32;
+                                board[startX + i, startY + i] = (char)32;                                
                             }
+                            wordCount--;
                         }
                         break;
 
@@ -178,8 +182,9 @@ namespace ConsoleApp1
                         {
                             for (int i = 0; i <= endX - startX; i++)
                             {
-                                board[startX + i, startY - i] = (char)32;
+                                board[startX + i, startY - i] = (char)32;                                
                             }
+                            wordCount--;
                         }
                         break;
                 }                  

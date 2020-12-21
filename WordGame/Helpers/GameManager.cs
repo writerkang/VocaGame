@@ -150,59 +150,59 @@ namespace WordGame.Helpers
                         }
                     }
                     //대각선 우하방향
-                    else if (rNum == (int) Direction.LeftToRightDown)
-                    {
-                        var randomX = random.Next(boardSize - wordLength);
-                        var randomY = random.Next(boardSize - wordLength);
-                        var hasSpace = true;
+                    //else if (rNum == (int) Direction.LeftToRightDown)
+                    //{
+                    //    var randomX = random.Next(boardSize - wordLength);
+                    //    var randomY = random.Next(boardSize - wordLength);
+                    //    var hasSpace = true;
 
-                        for (int i = 0; i < wordLength; i++)
-                        {
-                            if (board[randomX + i, randomY + i] != 'X')
-                            {
-                                hasSpace = false;
-                                break;
-                            }
-                        }
+                    //    for (int i = 0; i < wordLength; i++)
+                    //    {
+                    //        if (board[randomX + i, randomY + i] != 'X')
+                    //        {
+                    //            hasSpace = false;
+                    //            break;
+                    //        }
+                    //    }
 
-                        success = false;
-                        if (hasSpace)
-                        {
-                            for (int i = 0; i < wordLength; i++)
-                            {
-                                board[randomX + i, randomY + i] = word.Name[i];
-                            }
+                    //    success = false;
+                    //    if (hasSpace)
+                    //    {
+                    //        for (int i = 0; i < wordLength; i++)
+                    //        {
+                    //            board[randomX + i, randomY + i] = word.Name[i];
+                    //        }
 
-                            success = true;
-                        }
+                    //        success = true;
+                    //    }
 
-                    }
-                    //대각선 좌하방향
-                    else if (rNum == (int) Direction.RightToLeftDown)
-                    {
-                        var randomX = random.Next(boardSize - wordLength);
-                        var randomY = random.Next(boardSize - wordLength);
-                        var hasSpace = true;
+                    //}
+                    ////대각선 좌하방향
+                    //else if (rNum == (int) Direction.RightToLeftDown)
+                    //{
+                    //    var randomX = random.Next(boardSize - wordLength);
+                    //    var randomY = random.Next(boardSize - wordLength);
+                    //    var hasSpace = true;
 
-                        for (int i = 0; i < wordLength; i++)
-                        {
-                            if (board[randomX + i, boardSize - i - 1 - randomY] != 'X')
-                            {
-                                hasSpace = false;
-                                break;
-                            }
-                        }
+                    //    for (int i = 0; i < wordLength; i++)
+                    //    {
+                    //        if (board[randomX + i, boardSize - i - 1 - randomY] != 'X')
+                    //        {
+                    //            hasSpace = false;
+                    //            break;
+                    //        }
+                    //    }
 
-                        success = false;
-                        if (hasSpace)
-                        {
-                            for (int i = 0; i < wordLength; i++)
-                            {
-                                board[randomX + i, boardSize - i - 1 - randomY] = word.Name[i];
-                            }
-                            success = true;
-                        }
-                    }
+                    //    success = false;
+                    //    if (hasSpace)
+                    //    {
+                    //        for (int i = 0; i < wordLength; i++)
+                    //        {
+                    //            board[randomX + i, boardSize - i - 1 - randomY] = word.Name[i];
+                    //        }
+                    //        success = true;
+                    //    }
+                    //}
                 }
             }
             
@@ -213,7 +213,7 @@ namespace WordGame.Helpers
                 {
                     if(board[i,j] == 'X')
                     {
-                        //board[i, j] = (char)random.Next(97, 123);
+                        board[i, j] = (char)random.Next(97, 123);
                     }
                 }
             }
